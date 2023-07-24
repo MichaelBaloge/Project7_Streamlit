@@ -94,8 +94,8 @@ num_col = test.select_dtypes(exclude='object').columns
 cat_col = test.select_dtypes(include='object').columns
 
 # URL de l'API Flask
-predict_url = 'http://mbcreditmodelapi.azurewebsites.net/predict'
-update_url = 'http://mbcreditmodelapi.azurewebsites.net/update'
+predict_url = 'https://mbcreditmodelapi.azurewebsites.net/predict'
+update_url = 'https://mbcreditmodelapi.azurewebsites.net/update'
 
 
 ## Fonctions utilisées ##
