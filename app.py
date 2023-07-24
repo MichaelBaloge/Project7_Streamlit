@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import json
 import seaborn as sns
 import matplotlib.pyplot as plt
 import requests
@@ -103,13 +104,13 @@ update_url = 'http://mbcreditmodelapi.azurewebsites.net/update'
 def get_prediction(row_number):
     data = {'data': row_number}
     response = requests.post(predict_url, json=data)
-    return response,response.status_code
+    return response.json(),response.status_code
 
 # fonction d'envoi des mises à jour et de récupération des nouvelles prédictions
 def submit_data(dico):
     data = {'data': dico}
     response = requests.post(update_url, json=data)
-    return response,response.status_code
+    return response.json(),response.status_code
 
 # fonction de callback de la sélection du client (entrée pour vérification de la validité)
 def callback1():
