@@ -103,17 +103,13 @@ update_url = 'http://mbcreditmodelapi.azurewebsites.net/update'
 def get_prediction(row_number):
     data = {'data': row_number}
     response = requests.post(predict_url, json=data)
-    with open(response.text,'r') as f:
-        resp_content = json.load(f)
-    return resp_content,response.status_code
+    return json.loads(response),response.status_code
 
 # fonction d'envoi des mises à jour et de récupération des nouvelles prédictions
 def submit_data(dico):
     data = {'data': dico}
     response = requests.post(update_url, json=data)
-    with open(response.text,'r') as f:
-        resp_content = json.load(f)
-    return resp_content,response.status_code
+    return json.loads(response),response.status_code
 
 # fonction de callback de la sélection du client (entrée pour vérification de la validité)
 def callback1():
