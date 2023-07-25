@@ -228,7 +228,7 @@ if st.session_state['client']:
                                     st.write("Valeur actuelle pour {ind} : {val}".format(ind = feat, 
                                     val = round(client_val,2)))
                                     new_val = st.number_input('Modifier', value=client_val,
-                                    min_value=min(train[feat]), max_value=max(train[feat]))
+                                    min_value=float(min(train[feat])), max_value=float(max(train[feat])))
                                     dico_update[feat] = new_val
                                 else:
                                     st.write("Valeur actuelle pour {ind} : {val}".format(ind = feat,
@@ -244,14 +244,10 @@ if st.session_state['client']:
                         unknown_indic = st.multiselect('Entrer une valeur', unknown)
                         if unknown_indic:
                             for feat in unknown_indic:
-                                try:
-                                    client_val = float(test.loc[test['SK_ID_CURR']==client_id, feat])
-                                except:
-                                    client_val = str(test.loc[test['SK_ID_CURR']==client_id, feat].values[0])
-                                if type(client_val) == float:
+                                if feat in num_col:
                                     st.write(f'Pas de valeur renseignée')
                                     new_val = st.number_input('Entrer', value = client_val,
-                                    min_value=min(train[feat]), max_value=max(train[feat]))
+                                    min_value=float(min(train[feat])), max_value=float(max(train[feat])))
                                     dico_update[feat] = new_val
                                 else:
                                     st.write(f'Pas de valeur renseignée')
