@@ -67,12 +67,12 @@ def update_select():
 ## URL d'API et récupéraiton des données de base ###
 
 # URL de l'API Flask
-ids_url = 'http://127.0.0.1:5000/reflist'
-feat_url = 'http://127.0.0.1:5000/features'
-client_url = 'http://127.0.0.1:5000/clientinfo'
-predict_url = 'http://127.0.0.1:5000/predict'
-update_url = 'http://127.0.0.1:5000/update'
-featinfo_url = 'http://127.0.0.1:5000/featureinfo'
+ids_url = 'https://mbcreditmodelapi.azurewebsites.net/reflist'
+feat_url = 'https://mbcreditmodelapi.azurewebsites.net/features'
+client_url = 'https://mbcreditmodelapi.azurewebsites.net/clientinfo'
+predict_url = 'https://mbcreditmodelapi.azurewebsites.net/predict'
+update_url = 'https://mbcreditmodelapi.azurewebsites.net/update'
+featinfo_url = 'https://mbcreditmodelapi.azurewebsites.net/featureinfo'
 
 # Récupération de la liste des nouveaux clients
 test_ids = get_client_ids()
