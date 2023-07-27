@@ -46,7 +46,7 @@ def submit_data(dico):
 # fonction de callback de la sélection du client (entrée pour vérification de la validité)
 def callback1():
     st.session_state['client'] = True
-    st.session_state['btn'] = st.session_state['btn']
+    st.session_state['btn'] = False
 
 # fonction de callback du click button de validation (affichage des informations du client)
 def callback2():
