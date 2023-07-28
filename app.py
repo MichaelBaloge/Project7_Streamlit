@@ -75,7 +75,7 @@ def update_select():
 # URL de l'API Flask
 ids_url = 'https://mbcreditmodelapi.azurewebsites.net/reflist'
 feat_url = 'https://mbcreditmodelapi.azurewebsites.net/features'
-exp_url = 'https:/mbcreditmodelapi.azurewebsites.net/shap'
+exp_url = 'https://mbcreditmodelapi.azurewebsites.net/shap'
 client_url = 'https://mbcreditmodelapi.azurewebsites.net/clientinfo'
 predict_url = 'https://mbcreditmodelapi.azurewebsites.net/predict'
 update_url = 'https://mbcreditmodelapi.azurewebsites.net/update'
