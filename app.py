@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import requests
 import numpy as np
 from matplotlib.lines import Line2D
+from io import BytesIO
 
 
 ## Fonctions utilisées ##
@@ -18,6 +19,11 @@ def get_client_ids():
 def get_features():
     response = requests.get(feat_url)
     return response.json()
+
+# fonction pour obtenir via l'API l'image de l'explicabilité globale
+def get_image():
+    response = requests.get(exp_url)
+    return BytesIO(response.content)
 
 # fonction pour obtenir via l'API les infos du client sélectionné
 def get_client_info(row_number):
@@ -69,6 +75,7 @@ def update_select():
 # URL de l'API Flask
 ids_url = 'https://mbcreditmodelapi.azurewebsites.net/reflist'
 feat_url = 'https://mbcreditmodelapi.azurewebsites.net/features'
+exp_url = 'http:/mbcreditmodelapi.azurewebsites.net/shap'
 client_url = 'https://mbcreditmodelapi.azurewebsites.net/clientinfo'
 predict_url = 'https://mbcreditmodelapi.azurewebsites.net/predict'
 update_url = 'https://mbcreditmodelapi.azurewebsites.net/update'
@@ -83,6 +90,9 @@ features = get_features()
 num_col = list(features['num'])
 cat_col = list(features['cat'])
 features = sorted(num_col + cat_col)
+
+# Récupération de l'image de l'explicabilité Shap
+shap_exp = get_image()
 
 
 ## Construction de l'application ##
@@ -322,7 +332,7 @@ if st.session_state['client']:
                     with col4:
                         st.markdown("<h5 style='text-align: center; '>Indicateurs les plus importants (Shap)</h5>", 
                             unsafe_allow_html=True)
-                        st.image('Shap_exp.png')
+                        st.image(shap_exp)
 
                     # feature importance locale avec lime
                     with col5:
