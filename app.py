@@ -208,7 +208,7 @@ if st.session_state['client']:
                                     st.write("Valeur actuelle pour {ind} : {val}".format(ind = feat,
                                     val = client_val))
                                     opt = list(set(train[feat]))
-                                    idx = opt.index(list(client_val)[0])
+                                    idx = opt.index(list(client_val))
                                     new_val = st.radio('Modifier', options = opt, index = idx)
                                     dico_update[feat] = new_val
 
